@@ -1,0 +1,85 @@
+{
+  "name": "bee-q",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/bee-q/src",
+  "projectType": "library",
+  "generators": {
+    "@nxext/stencil:component": {
+      "style": "scss"
+    }
+  },
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "@nxext/stencil:test",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "projectType": "library",
+        "tsConfig": "libs/bee-q/tsconfig.lib.json",
+        "configPath": "libs/bee-q/stencil.config.ts",
+        "outputPath": "dist/bee-q"
+      }
+    },
+    "build": {
+      "executor": "@nxext/stencil:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "projectType": "library",
+        "tsConfig": "libs/bee-q/tsconfig.lib.json",
+        "configPath": "libs/bee-q/stencil.config.ts",
+        "outputPath": "dist/bee-q"
+      },
+      "configurations": {
+        "production": {
+          "dev": false,
+          "prod": true
+        }
+      },
+      "dependsOn": ["^build", "extract-icons"]
+    },
+    "serve": {
+      "executor": "@nxext/stencil:serve",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "projectType": "library",
+        "tsConfig": "libs/bee-q/tsconfig.lib.json",
+        "configPath": "libs/bee-q/stencil.config.ts",
+        "outputPath": "dist/bee-q"
+      },
+      "dependsOn": ["extract-icons"]
+    },
+    "e2e": {
+      "executor": "@nxext/stencil:e2e",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "projectType": "library",
+        "tsConfig": "libs/bee-q/tsconfig.lib.json",
+        "configPath": "libs/bee-q/stencil.config.ts",
+        "outputPath": "dist/bee-q"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": "libs/bee-q/**/*.{ts,tsx}"
+      }
+    },
+    "extract-icons": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/icon-library/extract-icons.js"
+      }
+    },
+    "publish": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "dryRun": true,
+        "access": "public",
+        "buildTarget": "production",
+        "noBuild": true,
+        "tag": "beta"
+      }
+    }
+  }
+}

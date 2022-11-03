@@ -1,0 +1,39 @@
+{
+  "name": "stencil-nx-monorepo",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "nx run bee-q:serve --verbose --output-style=stream-without-prefixes",
+    "build": "nx run bee-q:build --verbose --output-style=stream-without-prefixes",
+    "publish": "nx run bee-q:publish --dry-run"
+  },
+  "private": true,
+  "devDependencies": {
+    "@nrwl/cli": "14.8.6",
+    "@nrwl/jest": "14.8.6",
+    "@nrwl/js": "14.8.6",
+    "@nrwl/storybook": "^14.8.6",
+    "@nrwl/workspace": "14.8.6",
+    "@nxext/stencil": "^14.0.6",
+    "@stencil/core": "2.17.1",
+    "@stencil/sass": "1.5.2",
+    "@types/jest": "28.1.1",
+    "@types/node": "16.11.7",
+    "adm-zip": "^0.5.9",
+    "fs-extra": "^10.1.0",
+    "jest": "28.1.1",
+    "jest-environment-jsdom": "28.1.1",
+    "ngx-deploy-npm": "^4.3.1",
+    "nx": "14.8.6",
+    "prettier": "^2.7.1",
+    "puppeteer": "^15.5.0",
+    "rimraf": "^3.0.2",
+    "superagent": "^8.0.3",
+    "ts-jest": "28.0.5",
+    "ts-node": "10.9.1",
+    "typescript": "~4.8.4"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
